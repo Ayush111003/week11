@@ -20,4 +20,5 @@ jobs:
       - name: Run tfsec
         uses: aquasecurity/tfsec-action@v1.0.3
         with:
+          working_directory: .
           soft_fail: false
