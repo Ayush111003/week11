@@ -17,8 +17,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Install tfsec
+        run: |
+          curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
+
       - name: Run tfsec
-        uses: aquasecurity/tfsec-action@v1.0.3
-        with:
-          working_directory: .
-          soft_fail: false
+        run: |
+          tfsec . --minimum-severity LOW
